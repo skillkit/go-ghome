@@ -24,7 +24,7 @@ func createRequest(t *testing.T) *dialogflow.GoogleCloudDialogflowV2WebhookReque
 }
 
 func TestApp(t *testing.T) {
-	app := NewApp(&Options{})
+	app := NewApp()
 
 	app.OnIntent(func(w ResponseWriter, r *Request) error {
 		w.WriteSpeech("Hello, world!")
@@ -47,7 +47,7 @@ func TestApp(t *testing.T) {
 }
 
 func TestAppVerifyRequest(t *testing.T) {
-	app := NewApp(&Options{})
+	app := NewApp()
 
 	app.VerifyRequest(func(r *http.Request) error {
 		return errors.New("Bad request")
@@ -59,7 +59,7 @@ func TestAppVerifyRequest(t *testing.T) {
 }
 
 func TestAppRequest(t *testing.T) {
-	app := NewApp(&Options{})
+	app := NewApp()
 
 	app.OnIntent(func(w ResponseWriter, r *Request) error {
 		if r.IntentName() != "Welcome" {

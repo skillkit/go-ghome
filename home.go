@@ -22,23 +22,9 @@ type App struct {
 	source        string
 }
 
-// Options represents Google Home app options.
-type Options struct {
-	ApplicationID    string
-	IgnoreTimestamp  bool
-	IgnoreCertVerify bool
-	Source           string
-}
-
 // NewApp creates a new Home app.
-func NewApp(opts *Options) *App {
-	a := &App{}
-
-	if opts != nil {
-		a.source = opts.Source
-	}
-
-	return a
+func NewApp() *App {
+	return &App{}
 }
 
 // OnIntent sets the intent handler.
@@ -62,8 +48,6 @@ func (a *App) Process(r *Request) (*Response, error) {
 			return nil, err
 		}
 	}
-
-	w.Source = a.source
 
 	return w, nil
 }

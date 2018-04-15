@@ -13,6 +13,7 @@ type ResponseWriter interface {
 	WriteOutputContext(string, int64, map[string]interface{}) error
 	WritePayload(interface{}) error
 	WriteSpeech(string)
+	WriteSource(string)
 	String() (string, error)
 }
 
@@ -105,6 +106,11 @@ func (r *Response) WritePayload(arg interface{}) error {
 // You can also write SSML as a speech text and Dialogflow will handle it.
 func (r *Response) WriteSpeech(content string) {
 	r.FulfillmentText = content
+}
+
+// WriteSource sets the JSON output source value.
+func (r *Response) WriteSource(source string) {
+	r.Source = source
 }
 
 // String will return the response as JSON.

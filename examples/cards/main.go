@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	app := ghome.NewApp(nil)
+	app := ghome.NewApp()
 
 	app.OnIntent(func(w ghome.ResponseWriter, r *ghome.Request) error {
 		w.WriteCard(&dialogflow.GoogleCloudDialogflowV2IntentMessageCard{
