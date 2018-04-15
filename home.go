@@ -81,9 +81,6 @@ func (a *App) Handler() http.Handler {
 			return
 		}
 
-		//buf, _ := ioutil.ReadAll(r.Body)
-		//fmt.Println(string(buf))
-
 		// Bail if JSON decode failes.
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 			fmt.Println(err)
@@ -108,8 +105,6 @@ func (a *App) Handler() http.Handler {
 		}
 
 		resp, err := a.Process(req2)
-		buf, _ := json.Marshal(resp)
-		fmt.Println(string(buf))
 
 		// Bail if process request failes.
 		if err != nil {
