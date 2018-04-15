@@ -28,7 +28,6 @@ func main() {
 
 	app.OnIntent(func(w ghome.ResponseWriter, r *ghome.Request) error {
 		w.WriteSpeech("Hello, world!")
-
 		return nil
 	})
 
