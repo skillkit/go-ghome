@@ -1,18 +1,24 @@
 package ghome
 
-import "testing"
+import (
+	"testing"
+
+	"google.golang.org/api/dialogflow/v2"
+)
 
 func TestResponseCard(t *testing.T) {
 	resp := NewResponse()
 
-	resp.WriteCard(&Card{
+	resp.WriteCard(&dialogflow.GoogleCloudDialogflowV2IntentMessageCard{
 		Title:    "Hello Gopher",
-		Subtitle: "",
+		Subtitle: "Nice day",
 		ImageUri: "https://golang.org/doc/gopher/frontpage.png",
-		Buttons: CardButtons(&CardButton{
-			Text:     "Learn more about Go",
-			Postback: "https://golang.org",
-		}),
+		Buttons: []*dialogflow.GoogleCloudDialogflowV2IntentMessageCardButton{
+			{
+				Text:     "Learn more about Go",
+				Postback: "https://golang.org",
+			},
+		},
 	})
 
 	if resp.FulfillmentMessages[0].Card.Title != "Hello Gopher" {
