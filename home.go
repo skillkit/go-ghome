@@ -57,7 +57,7 @@ func (a *App) Handler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var req *dialogflow.GoogleCloudDialogflowV2WebhookRequest
 
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 
 		// Bail if POST method.
 		if strings.ToUpper(r.Method) != "POST" {
